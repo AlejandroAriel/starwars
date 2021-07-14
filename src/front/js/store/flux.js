@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			favorites: [],
 			nombre: "Alejandro",
 			message: null,
 			demo: [
@@ -42,6 +43,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+
+			addFavorites: name => {
+				setStore({ favorites: [...getStore().favorites, name] });
 			}
 		}
 	};

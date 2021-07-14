@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 import { Button, Card } from "react-bootstrap";
 
 export const Home = () => {
+	const { store, actions } = useContext(Context); //para acceder al context, de otra forma no se utiliza
 	const [personajes, setPersonajes] = useState([]);
 	const [planetas, setPlanetas] = useState([]);
 
@@ -38,12 +38,20 @@ export const Home = () => {
 
 	const result = personajes.map((item, index) => (
 		<div key={index} className="col">
-			<Card style={{ width: "18rem" }}>
+			<Card>
 				<Card.Img variant="top" src="https://cdn.worldvectorlogo.com/logos/star-wars-2.svg" />
 				<Card.Body>
 					<Card.Title>{item.name}</Card.Title>
 					<Card.Text>{item.url}</Card.Text>
 					<Button variant="primary">Go somewhere</Button>
+					<Button
+						onClick={() => {
+							actions.addFavorites(item.name);
+						}}
+						className="danger"
+						variant="danger">
+						♡
+					</Button>
 				</Card.Body>
 			</Card>
 		</div>
@@ -57,6 +65,14 @@ export const Home = () => {
 					<Card.Title>{item.name}</Card.Title>
 					<Card.Text>{item.url}</Card.Text>
 					<Button variant="primary">Go somewhere</Button>
+					<Button
+						onClick={() => {
+							actions.addFavorites(item.name);
+						}}
+						className="danger"
+						variant="danger">
+						♡
+					</Button>
 				</Card.Body>
 			</Card>
 		</div>
@@ -70,8 +86,9 @@ export const Home = () => {
 	// }, []);
 
 	return (
-		<div className="text-center mt-5">
+		<div>
 			<h1>Characters</h1>
+
 			<div className="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2 tarjetitas">{result}</div>
 			<h1>Planets</h1>
 			<div className="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2 tarjetitas">{result2}</div>

@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Dropdown, Button } from "react-bootstrap";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+	const favoriteList = store.favorites.map((item, index) => (
+		// Only do this if items have no stable IDs
+
+		<Dropdown.Item className="d-flex justify-content-between" key={index} as="button">
+			<li>{item}</li>
+			<Button variant="dark botonsito">
+				<i className="fa fa-trash " />
+			</Button>
+		</Dropdown.Item>
+	));
+
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			<div className="container">
@@ -10,18 +24,13 @@ export const Navbar = () => {
 					src="https://imagenesparapeques.com/wp-content/uploads/2016/01/Star-Wars-Logo.png"
 				/>
 
-				<form className="form-inline ml-5">
-					<div className="btn-group">
-						<button
-							type="button"
-							className="btn btn-primary dropdown-toggle"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false">
-							Favorites
-						</button>
-					</div>
-				</form>
+				<Dropdown>
+					<Dropdown.Toggle variant="success" id="dropdown-basic">
+						Dropdown Button
+					</Dropdown.Toggle>
+
+					<Dropdown.Menu>{favoriteList}</Dropdown.Menu>
+				</Dropdown>
 			</div>
 			<div />
 		</nav>
