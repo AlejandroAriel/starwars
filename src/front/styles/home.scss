@@ -1,6 +1,18 @@
 .card {
     display: inline-flex;
+    height:auto;
 }
 .star{
     height: 80px;
 }
+.scrolling-wrapper{
+	overflow-x: auto;
+}
+.tarjetitas{
+    display: flex;
+    margin: auto;
+    width: 70%;
+    height: auto;
+}
+
+

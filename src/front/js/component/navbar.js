@@ -23,6 +23,7 @@ export const Navbar = () => {
 					</div>
 				</form>
 			</div>
+			<div />
 		</nav>
 
 		//<nav className="navbar navbar-light bg-light mb-3">
