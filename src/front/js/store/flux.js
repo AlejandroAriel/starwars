@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			nombre: "Alejandro",
 			message: null,
 			demo: [
 				{
