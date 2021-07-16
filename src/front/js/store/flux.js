@@ -47,6 +47,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			addFavorites: name => {
 				setStore({ favorites: [...getStore().favorites, name] });
+			},
+
+			removeFavorites: key => {
+				setStore({ favorites: getStore().favorites.filter((item, index) => index != key) }); //con getStore agarro el arr, que en este caso es favorites, y le hago un filter con los elementos que tenga un index disstinto a la key, y el que lo tenga igual no lo agrega.
 			}
 		}
 	};

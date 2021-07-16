@@ -10,7 +10,13 @@ export const Navbar = () => {
 
 		<Dropdown.Item className="d-flex justify-content-between" key={index} as="button">
 			<li>{item}</li>
-			<Button variant="dark botonsito">
+			<Button
+				variant="dark botonsito"
+				onClick={() => {
+					// actions.removeFavorites(index);
+					actions.removeFavorites(index);
+					console.log(index);
+				}}>
 				<i className="fa fa-trash " />
 			</Button>
 		</Dropdown.Item>
