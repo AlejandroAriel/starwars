@@ -2,6 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			favorites: [],
+			charactersData: {},
+			planetsData: {},
 			nombre: "Alejandro",
 			message: null,
 			demo: [
@@ -51,9 +53,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			removeFavorites: key => {
 				setStore({ favorites: getStore().favorites.filter((item, index) => index != key) }); //con getStore agarro el arr, que en este caso es favorites, y le hago un filter con los elementos que tenga un index disstinto a la key, y el que lo tenga igual no lo agrega.
+			},
+
+			recibirCharactersData: async id => {
+				try {
+					let response = await fetch(`https://www.swapi.tech/api/people/${id}`);
+					const data = await response.json();
+					let data_CharactersData = data.result;
+					//Da un objecto
+					setStore({ charactersData: data_CharactersData });
+				} catch (e) {
+					console.error(`error de -- ${e}`);
+				}
+			},
+			recibirPlanetsData: async id => {
+				try {
+					let response = await fetch(`https://www.swapi.tech/api/planets/${id}`);
+					const data = await response.json();
+					let data_PlanetsData = data.result;
+					//Da un objecto
+					setStore({ planetsData: data_PlanetsData });
+				} catch (e) {
+					console.error(`error de -- ${e}`);
+				}
 			}
 		}
 	};
 };
 
 export default getState;
+
+// Si es informacion "STORE" para acceder a la variable que tenga la info, pero si es una funcion es "actions"

@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
 import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context); //para acceder al context, de otra forma no se utiliza
@@ -43,7 +44,15 @@ export const Home = () => {
 				<Card.Body>
 					<Card.Title>{item.name}</Card.Title>
 					<Card.Text>{item.url}</Card.Text>
-					<Button variant="primary">Go somewhere</Button>
+					<Link to={"/people/" + item.uid}>
+						<Button
+							variant="primary"
+							onClick={() => {
+								//console.log(item.uid);
+							}}>
+							Go somewhere
+						</Button>
+					</Link>
 					<Button
 						onClick={() => {
 							actions.addFavorites(item.name);
@@ -64,7 +73,16 @@ export const Home = () => {
 				<Card.Body>
 					<Card.Title>{item.name}</Card.Title>
 					<Card.Text>{item.url}</Card.Text>
-					<Button variant="primary">Go somewhere</Button>
+					<Link to={"/planets/" + item.uid}>
+						<Button
+							variant="primary"
+							onClick={() => {
+								//console.log(item.uid);
+							}}>
+							Go somewhere
+						</Button>
+					</Link>
+
 					<Button
 						onClick={() => {
 							actions.addFavorites(item.name);
