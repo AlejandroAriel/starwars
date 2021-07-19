@@ -37,34 +37,36 @@ export const Home = () => {
 			});
 	}, []);
 
-	const result = personajes.map((item, index) => (
-		<div key={index} className="col">
-			<Card>
-				<Card.Img variant="top" src="https://cdn.worldvectorlogo.com/logos/star-wars-2.svg" />
-				<Card.Body>
-					<Card.Title>{item.name}</Card.Title>
-					<Card.Text>{item.url}</Card.Text>
-					<Link to={"/people/" + item.uid}>
+	const result = personajes.map((item, index) => {
+		return (
+			<div key={index} className="col">
+				<Card>
+					<Card.Img variant="top" src="https://cdn.worldvectorlogo.com/logos/star-wars-2.svg" />
+					<Card.Body>
+						<Card.Title>{item.name}</Card.Title>
+						<Card.Text>{item.url}</Card.Text>
+						<Link to={"/people/" + item.uid}>
+							<Button
+								variant="primary"
+								onClick={() => {
+									//console.log(item.uid);
+								}}>
+								Character date
+							</Button>
+						</Link>
 						<Button
-							variant="primary"
 							onClick={() => {
-								//console.log(item.uid);
-							}}>
-							Character date
+								actions.addFavorites(item.name);
+							}}
+							className="danger"
+							variant="danger">
+							♡
 						</Button>
-					</Link>
-					<Button
-						onClick={() => {
-							actions.addFavorites(item.name);
-						}}
-						className="danger"
-						variant="danger">
-						♡
-					</Button>
-				</Card.Body>
-			</Card>
-		</div>
-	));
+					</Card.Body>
+				</Card>
+			</div>
+		);
+	});
 
 	const result2 = planetas.map((item, index) => (
 		<div key={index} className="col">
