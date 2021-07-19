@@ -25,8 +25,21 @@ h1{
 
 .danger{
     
-    margin-left: 90px;
+    margin-left: 35%;;
 }
-.botonsito {
+.borrar {
     margin-left: 30px;
+}
+.myBox {
+    display: flex;
+    align-items: center;
+}
+.foto {
+    height: 500px;
+    width: 500px;
+}
+.info{
+    margin-top: 10px;
+    padding:10px;
+    border-top: solid black;
 }

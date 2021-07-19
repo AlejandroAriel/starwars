@@ -3,6 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "../../styles/home.scss";
 
 export function People() {
 	const { store, actions } = useContext(Context);
@@ -49,8 +50,12 @@ export function People() {
 			{store.charactersData.properties ? (
 				<div>
 					<div className="myBox">
+						<div>
+							<img className="foto" src="https://cdn.worldvectorlogo.com/logos/star-wars-2.svg" />
+						</div>
 						<div className="row">
 							<div className="col-4" />
+
 							<div className="col-8">
 								<h2>{store.charactersData.properties.name}</h2>
 
@@ -60,7 +65,7 @@ export function People() {
 
 						<hr className="bg-black" />
 					</div>
-					<div className="row d-flex justify-content-center justify-content-md-start no-gutters">
+					<div className="info row d-flex justify-content-center justify-content-md-start no-gutters">
 						{mapeo(store.charactersData.properties)}
 						{mapeo2(store.charactersData.properties)}
 					</div>

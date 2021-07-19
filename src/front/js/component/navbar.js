@@ -11,7 +11,7 @@ export const Navbar = () => {
 		<Dropdown.Item className="d-flex justify-content-between" key={index} as="button">
 			<li>{item}</li>
 			<Button
-				variant="dark botonsito"
+				variant="dark borrar"
 				onClick={() => {
 					// actions.removeFavorites(index);
 					actions.removeFavorites(index);
@@ -25,14 +25,17 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			<div className="container">
-				<img
-					className="star"
-					src="https://imagenesparapeques.com/wp-content/uploads/2016/01/Star-Wars-Logo.png"
-				/>
+				<Link to="/">
+					<img
+						className="star"
+						src="https://imagenesparapeques.com/wp-content/uploads/2016/01/Star-Wars-Logo.png"
+						onClick={() => {}}
+					/>
+				</Link>
 
 				<Dropdown>
 					<Dropdown.Toggle variant="success" id="dropdown-basic">
-						Dropdown Button
+						Favorites
 					</Dropdown.Toggle>
 
 					<Dropdown.Menu>{favoriteList}</Dropdown.Menu>

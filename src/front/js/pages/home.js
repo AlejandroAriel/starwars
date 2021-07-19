@@ -50,7 +50,7 @@ export const Home = () => {
 							onClick={() => {
 								//console.log(item.uid);
 							}}>
-							Go somewhere
+							Character date
 						</Button>
 					</Link>
 					<Button
@@ -79,7 +79,7 @@ export const Home = () => {
 							onClick={() => {
 								//console.log(item.uid);
 							}}>
-							Go somewhere
+							Planets date
 						</Button>
 					</Link>
 
