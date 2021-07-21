@@ -55,10 +55,15 @@ export const Home = () => {
 							</Button>
 						</Link>
 						<Button
-							onClick={() => {
+							onClick={e => {
+								if (e.target.className == "heart btn btn-danger") {
+									e.target.className = "heart btn btn-warning";
+								} else {
+									e.target.className = "heart btn btn-danger";
+								}
 								actions.addFavorites(item.name);
 							}}
-							className="danger"
+							className="heart"
 							variant="danger">
 							♡
 						</Button>
@@ -76,20 +81,22 @@ export const Home = () => {
 					<Card.Title>{item.name}</Card.Title>
 					<Card.Text>{item.url}</Card.Text>
 					<Link to={"/planets/" + item.uid}>
-						<Button
-							variant="primary"
-							onClick={() => {
-								//console.log(item.uid);
-							}}>
+						<Button variant="primary" onClick={() => {}}>
 							Planets date
 						</Button>
 					</Link>
 
 					<Button
-						onClick={() => {
+						onClick={e => {
+							if (e.target.className == "heart btn btn-danger") {
+								e.target.className = "heart btn btn-warning";
+							} else {
+								e.target.className = "heart btn btn-danger";
+							}
 							actions.addFavorites(item.name);
+							console.log(e.target.className);
 						}}
-						className="danger"
+						className="heart"
 						variant="danger">
 						♡
 					</Button>
